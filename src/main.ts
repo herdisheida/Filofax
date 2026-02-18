@@ -140,8 +140,12 @@ function normalizePrepopulation(data: PrepopData): Contact[] {
 
 
 /* 
-  Utility functions
+  local stoage
 */
+function saveContacts(contacts: Contact[]) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+}
+
 const STORAGE_KEY = "filofax_contacts";
 
 function loadContacts(): Contact[] {
@@ -151,10 +155,14 @@ function loadContacts(): Contact[] {
   if (stored) { return JSON.parse(stored) as Contact[]; }
 
   // save prepopulation data to localStorage
-  const initialContacts = normalizePrepopulation(prepopulation as PrepopData);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(initialContacts));
+  const data = prepopulation as unknown as PrepopData;
+  if (!data || !Array.isArray(data.contacts)) {
+    throw new Error("prepopulation.json must be { contacts: [...] }");
+  }
 
-  return initialContacts;
+  const initial = normalizePrepopulation(data);
+  saveContacts(initial);
+  return initial;
 }
 
 
@@ -262,3 +270,4 @@ if (!root) throw new Error("Missing #app");
 
 let state: Contact[] = loadContacts();
 renderApp(root, state);
+// setupEvents(root);
