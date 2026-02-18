@@ -21,20 +21,20 @@ interface BaseContact {
 interface IndividualInfo {
   phoneNumber: string;
   title: string;
-  emailAddress: string;
+  email: string;
   address: string;
   website: string;
 }
 
 interface CompanyKeyContact {
   name: string;
-  emailAddress: string;
+  email: string;
 }
 
 interface CompanyInfo {
   phoneNumber: string;
   industry: string;
-  emailAddress: string;
+  email: string;
   address: string;
   website: string;
   keyContacts: CompanyKeyContact[];
@@ -82,9 +82,12 @@ function renderHeader(): string {
 function renderContactCard(contact: Contact): string {
   const subtitle = contact.type === ContactType.Individual ? contact.info.title : contact.info.industry;
 
+  // get thumbnail (initial's of name)
+  const thumbnail = contact.name.split(" ").map(n => n[0]).join("").toUpperCase();
+
   return `
     <article class="card" data-id="${contact.id}">
-      <div class="thumb">${contact.thumbnail}</div>
+      <div class="thumb">${thumbnail}</div>
 
       <h2 class="name">${contact.name}</h2>
       <div class="subtitle">${subtitle}</div>
@@ -110,7 +113,7 @@ function renderDetails(contact: Contact): string {
     const i = contact.info;
     return `
       <div class="detail-line">${i.phoneNumber}</div>
-      <div class="detail-line">${i.emailAddress}</div>
+      <div class="detail-line">${i.email}</div>
       <div class="detail-line">${i.address}</div>
       <div class="detail-line">${i.website}</div>
     `;
@@ -119,7 +122,7 @@ function renderDetails(contact: Contact): string {
   const c = contact.info;
   return `
     <div class="detail-line">${c.phoneNumber}</div>
-    <div class="detail-line">${c.emailAddress}</div>
+    <div class="detail-line">${c.email}</div>
     <div class="detail-line">${c.address}</div>
     <div class="detail-line">${c.website}</div>
 
@@ -131,7 +134,7 @@ function renderDetails(contact: Contact): string {
             (kc) => `
               <li>
                 <span class="kc-name">${kc.name}</span>
-                <span class="kc-email">&lt;${kc.emailAddress}&gt;</span>
+                <span class="kc-email">&lt;${kc.email}&gt;</span>
               </li>
             `
           )
@@ -140,4 +143,5 @@ function renderDetails(contact: Contact): string {
     </div>
   `;
 }
+
 
