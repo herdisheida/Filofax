@@ -26,13 +26,15 @@ interface IndividualInfo {
 }
 
 
+interface KeyContact { name: string; email: string; }
+
 interface CompanyInfo {
   phoneNumber: string;
   industry: string;
   email: string;
   address: string;
   website: string;
-  keyContacts: IndividualInfo[];
+  keyContacts: KeyContact[];
 }
 
 interface IndividualContact extends BaseContact {
@@ -45,6 +47,90 @@ interface CompanyContact extends BaseContact {
   info: CompanyInfo;
 }
 
+
+/* 
+  prepopulation types (matches JSON file)
+*/
+type PrepopIndividual = {
+  type: "individual";
+  name: string;
+  phoneNumber: string;
+  title: string;
+  email: string;
+  address: string;
+  website: string;
+};
+
+type PrepopCompany = {
+  type: "company";
+  name: string;
+  phoneNumber: string;
+  industry: string;
+  email: string;
+  address: string;
+  website: string;
+  keyContacts: { name: string; email: string }[];
+};
+
+type PrepopData = {
+  contacts: Array<PrepopIndividual | PrepopCompany>;
+};
+
+
+/* 
+  normalise json data to Contact interface format
+*/
+function createInitials(name: string): string {
+  const parts = name.trim().split(" ").filter(Boolean);
+  return parts.map(p => p[0]).join("").toUpperCase();
+}
+
+function normalizePrepopulation(data: PrepopData): Contact[] {
+  return data.contacts.map((c) => {
+    const base: BaseContact = {
+      name: c.name,
+      thumbnail: createInitials(c.name),
+      type: c.type === "company" ? ContactType.Company : ContactType.Individual,
+      isExpanded: false,
+    };
+
+    if (c.type === "individual") {
+      const individual: IndividualContact = {
+        ...base,
+        type: ContactType.Individual,
+        info: {
+          phoneNumber: c.phoneNumber,
+          title: c.title,
+          email: c.email,
+          address: c.address,
+          website: c.website,
+        },
+      };
+      return individual;
+    }
+
+    // company
+    const company: CompanyContact = {
+      ...base,
+      type: ContactType.Company,
+      info: {
+        phoneNumber: c.phoneNumber,
+        industry: c.industry,
+        email: c.email,
+        address: c.address,
+        website: c.website,
+
+        // TODO umm á þetta að vera individual info? (en það er ekkert name né email þar?)
+        keyContacts: c.keyContacts.map((kc) => ({
+          name: kc.name,
+          email: kc.email,
+        })),
+      },
+    };
+
+    return company;
+  });
+}
 
 
 
@@ -61,7 +147,7 @@ function loadContacts(): Contact[] {
   if (stored) { return JSON.parse(stored) as Contact[]; }
 
   // save prepopulation data to localStorage
-  const initialContacts = prepopulation.contacts as Contact[];
+  const initialContacts = normalizePrepopulation(prepopulation as PrepopData);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(initialContacts));
 
   return initialContacts;
