@@ -211,10 +211,10 @@ function renderContactCard(contact: Contact): string {
       ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
 
       <div class="icon-container">
-        <span uk-icon="receiver"></span> 
-        <span uk-icon="mail"></span>
-        <span uk-icon="commenting"></span>
-        <span uk-icon="calendar"></span>
+        <div class="uk-label"><span uk-icon="receiver"></span></div>
+        <div class="uk-label"><span uk-icon="mail"></span></div>
+        <div class="uk-label"><span uk-icon="commenting"></span></div>
+        <div class="uk-label"><span uk-icon="calendar"></span></div>
       </div>
 
       <div class="chevron" data-action="toggle">
