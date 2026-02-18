@@ -179,7 +179,7 @@ function renderApp(root: HTMLElement, contacts: Contact[]) {
     </header>
 
     <main>
-      <section class="card-container">
+      <section class="card-container uk-flex uk-flex-center uk-flex-wrap uk-text-center">
         ${contacts.map(renderContactCard).join("")}
       </section>
     </main>
@@ -201,7 +201,7 @@ function renderContactCard(contact: Contact): string {
   // get thumbnail (abbreviation of name)
 
   return `
-    <div class="card uk-card uk-card-default uk-card-body uk-width-1-2@m" id="${contact.id}">
+    <div class="card uk-card uk-card-default uk-card-body" id="${contact.id}">
       
       <div class="thumb">${contact.thumbnail}</div>
 
