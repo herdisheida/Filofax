@@ -215,9 +215,9 @@ function renderContactCard(contact: Contact): string {
         <span uk-icon="calendar"></span>
       </div>
 
-      <button class="chevron" data-action="toggle" type="button" aria-label="Toggle details">
+      <div class="chevron" data-action="toggle">
         ${contact.isExpanded ? "<span uk-icon=\"chevron-up\"></span>" : "<span uk-icon=\"chevron-down\"></span>"}
-      </button>
+      </div>
 
       ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
     </article>
@@ -270,14 +270,16 @@ function setupEvents(root: HTMLElement) {
   root.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
 
+    // onlly detect chevron toggle click
     const actionEl = target.closest<HTMLElement>("[data-action]");
     if (!actionEl) return;
-
     if (actionEl.dataset.action !== "toggle") return;
 
+    // find the card element (that has the chevron-icon that was clicked)
     const cardEl = target.closest<HTMLElement>(".card");
     if (!cardEl) return;
 
+    // get contact id
     const id = cardEl.dataset.id;
     if (!id) return;
 
@@ -286,6 +288,8 @@ function setupEvents(root: HTMLElement) {
     renderApp(root, state);
   });
 }
+
+
 
 const root = document.querySelector<HTMLDivElement>("#app");
 if (!root) throw new Error("Missing #app");
