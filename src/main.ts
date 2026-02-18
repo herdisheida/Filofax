@@ -199,11 +199,11 @@ function renderContactCard(contact: Contact): string {
   const subtitle = contact.type === ContactType.Individual ? contact.info.title : contact.info.industry;
 
   // get thumbnail (abbreviation of name)
-  const thumbnail = contact.name.split(" ").map(n => n[0]).join("").toUpperCase();
 
   return `
-    <article class="card" id="${contact.id}">
-      <div class="thumb">${thumbnail}</div>
+    <div class="card uk-card uk-card-default uk-card-body uk-width-1-2@m" id="${contact.id}">
+      
+      <div class="thumb">${contact.thumbnail}</div>
 
       <h2 class="name">${contact.name}</h2>
       <div class="subtitle">${subtitle}</div>
@@ -221,7 +221,7 @@ function renderContactCard(contact: Contact): string {
         ${contact.isExpanded ? "<span uk-icon=\"chevron-up\"></span>" : "<span uk-icon=\"chevron-down\"></span>"}
       </div>
 
-    </article>
+    </div>
   `;
 }
 
