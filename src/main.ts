@@ -203,7 +203,9 @@ function renderContactCard(contact: Contact): string {
   return `
     <div class="card uk-card uk-card-default uk-card-body uk-margin-small uk-padding" id="${contact.id}">
       
-      <div class="thumb">${contact.thumbnail}</div>
+      <div class="thumbnail-container">
+        <div class="thumb">${contact.thumbnail}</div>
+      </div>
 
       <h2 class="name">${contact.name}</h2>
       <div class="subtitle">${subtitle}</div>
