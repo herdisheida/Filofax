@@ -261,13 +261,35 @@ function renderDetails(contact: Contact): string {
 }
 
 
+
+
 /*
   boot up
 */
+function setupEvents(root: HTMLElement) {
+  root.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+
+    const actionEl = target.closest<HTMLElement>("[data-action]");
+    if (!actionEl) return;
+
+    if (actionEl.dataset.action !== "toggle") return;
+
+    const cardEl = target.closest<HTMLElement>(".card");
+    if (!cardEl) return;
+
+    const id = cardEl.dataset.id;
+    if (!id) return;
+
+    state = state.map((c) => (c.id === id ? { ...c, isExpanded: !c.isExpanded } : c));
+    saveContacts(state);
+    renderApp(root, state);
+  });
+}
 
 const root = document.querySelector<HTMLDivElement>("#app");
 if (!root) throw new Error("Missing #app");
 
 let state: Contact[] = loadContacts();
 renderApp(root, state);
-// setupEvents(root);
+setupEvents(root);
