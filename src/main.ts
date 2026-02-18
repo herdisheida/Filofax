@@ -14,6 +14,8 @@ interface BaseContact {
   name: string;
   thumbnail: string;
   type: ContactType;
+
+  id: string;
   isExpanded?: boolean;  // card expansion state
 }
 
@@ -86,11 +88,13 @@ function createInitials(name: string): string {
 }
 
 function normalizePrepopulation(data: PrepopData): Contact[] {
-  return data.contacts.map((c) => {
+  return data.contacts.map((c, i) => {
     const base: BaseContact = {
       name: c.name,
       thumbnail: createInitials(c.name),
       type: c.type === "company" ? ContactType.Company : ContactType.Individual,
+
+      id: `contact-${i}`,
       isExpanded: false,
     };
 
@@ -190,7 +194,7 @@ function renderContactCard(contact: Contact): string {
   const thumbnail = contact.name.split(" ").map(n => n[0]).join("").toUpperCase();
 
   return `
-    <article class="card" data-id="${contact.id}">
+    <article class="card" id="${contact.id}">
       <div class="thumb">${thumbnail}</div>
 
       <h2 class="name">${contact.name}</h2>
