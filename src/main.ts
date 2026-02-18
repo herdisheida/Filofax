@@ -53,6 +53,15 @@ interface CompanyContact extends BaseContact {
 
 
 
+// get prepopulated json and set it as Contact[]
+function loadContacts(): Contact[] {
+    return JSON.parse(JSON.stringify(prepopulation.contacts)) as Contact[];
+}
+
+
+
+
+
 /* 
   Rendering functions
 */
@@ -145,3 +154,12 @@ function renderDetails(contact: Contact): string {
 }
 
 
+/*
+  boot up
+*/
+
+const root = document.querySelector<HTMLDivElement>("#app");
+if (!root) throw new Error("Missing #app");
+
+let state: Contact[] = loadContacts();
+renderApp(root, state);
