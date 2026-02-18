@@ -13,7 +13,6 @@ type Contact = IndividualContact | CompanyContact;
 interface BaseContact {
   id: string;
   name: string;
-  thumbnail: string;
   type: ContactType;
   isExpanded?: boolean;  // card expansion state
 }
@@ -53,9 +52,23 @@ interface CompanyContact extends BaseContact {
 
 
 
-// get prepopulated json and set it as Contact[]
+
+/* 
+  Utility functions
+*/
+const STORAGE_KEY = "filofax_contacts";
+
 function loadContacts(): Contact[] {
-    return JSON.parse(JSON.stringify(prepopulation.contacts)) as Contact[];
+  const stored = localStorage.getItem(STORAGE_KEY);
+
+  // already have data in localStorage
+  if (stored) { return JSON.parse(stored) as Contact[]; }
+
+  // save prepopulation data to localStorage
+  const initialContacts = prepopulation.contacts as Contact[];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(initialContacts));
+
+  return initialContacts;
 }
 
 
