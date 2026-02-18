@@ -19,25 +19,25 @@ interface BaseContact {
 }
 
 interface IndividualInfo {
-  phone_number: string;
+  phoneNumber: string;
   title: string;
-  email_address: string;
+  emailAddress: string;
   address: string;
   website: string;
 }
 
 interface CompanyKeyContact {
   name: string;
-  email_address: string;
+  emailAddress: string;
 }
 
 interface CompanyInfo {
-  phone_number: string;
+  phoneNumber: string;
   industry: string;
-  email_address: string;
+  emailAddress: string;
   address: string;
   website: string;
-  key_contacts: CompanyKeyContact[];
+  keyContacts: CompanyKeyContact[];
 }
 
 interface IndividualContact extends BaseContact {
@@ -84,10 +84,10 @@ function renderContactCard(contact: Contact): string {
 
   return `
     <article class="card" data-id="${contact.id}">
-      <div class="thumb">${(contact.thumbnail)}</div>
+      <div class="thumb">${contact.thumbnail}</div>
 
-      <h2 class="name">${(contact.name)}</h2>
-      <div class="subtitle">${(subtitle)}</div>
+      <h2 class="name">${contact.name}</h2>
+      <div class="subtitle">${subtitle}</div>
 
       <div class="icon-container">
         <span uk-icon="receiver"></span> 
@@ -109,29 +109,29 @@ function renderDetails(contact: Contact): string {
   if (contact.type === ContactType.Individual) {
     const i = contact.info;
     return `
-      <div class="detail-line">${(i.phone_number)}</div>
-      <div class="detail-line">${(i.email_address)}</div>
-      <div class="detail-line">${(i.address)}</div>
-      <div class="detail-line">${(i.website)}</div>
+      <div class="detail-line">${i.phoneNumber}</div>
+      <div class="detail-line">${i.emailAddress}</div>
+      <div class="detail-line">${i.address}</div>
+      <div class="detail-line">${i.website}</div>
     `;
   }
 
   const c = contact.info;
   return `
-    <div class="detail-line">${(c.phone_number)}</div>
-    <div class="detail-line">${(c.email_address)}</div>
-    <div class="detail-line">${(c.address)}</div>
-    <div class="detail-line">${(c.website)}</div>
+    <div class="detail-line">${c.phoneNumber}</div>
+    <div class="detail-line">${c.emailAddress}</div>
+    <div class="detail-line">${c.address}</div>
+    <div class="detail-line">${c.website}</div>
 
     <div class="key-contacts">
       <h3>Key contacts</h3>
       <ul>
-        ${c.key_contacts
+        ${c.keyContacts
           .map(
             (kc) => `
               <li>
-                <span class="kc-name">${(kc.name)}</span>
-                <span class="kc-email">&lt;${(kc.email_address)}&gt;</span>
+                <span class="kc-name">${kc.name}</span>
+                <span class="kc-email">&lt;${kc.emailAddress}&gt;</span>
               </li>
             `
           )
@@ -140,7 +140,4 @@ function renderDetails(contact: Contact): string {
     </div>
   `;
 }
-
-
-
 
