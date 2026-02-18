@@ -201,7 +201,7 @@ function renderContactCard(contact: Contact): string {
   // get thumbnail (abbreviation of name)
 
   return `
-    <div class="card uk-card uk-card-default uk-card-body" id="${contact.id}">
+    <div class="card uk-card uk-card-default uk-card-body uk-margin-small uk-padding" id="${contact.id}">
       
       <div class="thumb">${contact.thumbnail}</div>
 
