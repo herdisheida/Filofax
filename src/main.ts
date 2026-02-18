@@ -11,8 +11,8 @@ enum ContactType {
 type Contact = IndividualContact | CompanyContact;
 
 interface BaseContact {
-  id: string;
   name: string;
+  thumbnail: string;
   type: ContactType;
   isExpanded?: boolean;  // card expansion state
 }
