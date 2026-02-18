@@ -25,10 +25,6 @@ interface IndividualInfo {
   website: string;
 }
 
-interface CompanyKeyContact {
-  name: string;
-  email: string;
-}
 
 interface CompanyInfo {
   phoneNumber: string;
@@ -36,7 +32,7 @@ interface CompanyInfo {
   email: string;
   address: string;
   website: string;
-  keyContacts: CompanyKeyContact[];
+  keyContacts: IndividualInfo[];
 }
 
 interface IndividualContact extends BaseContact {
