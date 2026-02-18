@@ -271,16 +271,16 @@ function setupEvents(root: HTMLElement) {
     const target = e.target as HTMLElement;
 
     // onlly detect chevron toggle click
-    const actionEl = target.closest<HTMLElement>("[data-action]");
-    if (!actionEl) return;
-    if (actionEl.dataset.action !== "toggle") return;
+    const actionElem = target.closest<HTMLElement>("[data-action]");
+    if (!actionElem) return;
+    if (actionElem.dataset.action !== "toggle") return;
 
     // find the card element (that has the chevron-icon that was clicked)
-    const cardEl = target.closest<HTMLElement>(".card");
-    if (!cardEl) return;
+    const cardElem = target.closest<HTMLElement>(".card");
+    if (!cardElem) return;
 
     // get contact id
-    const id = cardEl.dataset.id;
+    const id = cardElem.id;
     if (!id) return;
 
     state = state.map((c) => (c.id === id ? { ...c, isExpanded: !c.isExpanded } : c));
