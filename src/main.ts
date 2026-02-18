@@ -208,6 +208,8 @@ function renderContactCard(contact: Contact): string {
       <h2 class="name">${contact.name}</h2>
       <div class="subtitle">${subtitle}</div>
 
+      ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
+
       <div class="icon-container">
         <span uk-icon="receiver"></span> 
         <span uk-icon="mail"></span>
@@ -219,7 +221,6 @@ function renderContactCard(contact: Contact): string {
         ${contact.isExpanded ? "<span uk-icon=\"chevron-up\"></span>" : "<span uk-icon=\"chevron-down\"></span>"}
       </div>
 
-      ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
     </article>
   `;
 }
