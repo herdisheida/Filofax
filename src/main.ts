@@ -91,7 +91,7 @@ function renderHeader(): string {
 function renderContactCard(contact: Contact): string {
   const subtitle = contact.type === ContactType.Individual ? contact.info.title : contact.info.industry;
 
-  // get thumbnail (initial's of name)
+  // get thumbnail (abbreviation of name)
   const thumbnail = contact.name.split(" ").map(n => n[0]).join("").toUpperCase();
 
   return `
