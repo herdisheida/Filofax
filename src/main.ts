@@ -200,6 +200,7 @@ function renderContactCard(contact: Contact): string {
 
   // get thumbnail (abbreviation of name)
 
+  // TODO when chevron is clicked the card of others should not be effecred (only the one im lcicking)
   return `
     <div class="card uk-card uk-card-default uk-card-body uk-margin-small uk-padding" id="${contact.id}">
       
