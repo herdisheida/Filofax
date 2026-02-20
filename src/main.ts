@@ -16,7 +16,7 @@ interface BaseContact {
   type: ContactType;
 
   id: string;
-  isExpanded?: boolean; // card expansion state
+  isExpanded: boolean; // card expansion state
 }
 
 interface IndividualInfo {
