@@ -33,6 +33,15 @@ body {
     margin: 3rem 0;
 }
 
+.card {
+    /* keep items centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* only 1 card is opened when chevron is clicked */
+    align-self: flex-start;
+}
+
 .thumbnail-container {
     border-radius: 50%;
     height: 5rem;
@@ -58,7 +67,6 @@ body {
     width: 30px;
     padding: 4px;
     border-radius: 7px;
-    align-content: center;
     margin: 30px 3px 0 3px;
 }
 
