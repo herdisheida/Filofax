@@ -1,111 +1,109 @@
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 
-
 /* variables */
 :root {
-    --white: #ffffff;
-    --black: black;
+  --white: #ffffff;
+  --black: black;
 
-    --blue-green-color: #21cca3;
-    --bg-color: #f3f5fb;
+  --blue-green-color: #21cca3;
+  --bg-color: #f3f5fb;
 
-    --secondary-font-color: #939090;
+  --secondary-font-color: #939090;
 }
 
 .spartan-font {
-    font-family: "League Spartan", sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
 .baskerville-font {
-    font-family: "Libre Baskerville", serif;
+  font-family: "Libre Baskerville", serif;
 }
-
 
 /* space between screen-edge and items on screen */
 html {
-    margin: 4rem 10rem;
-    background: var(--bg-color);
-    color: var(--black);
+  margin: 4rem 10rem;
+  background: var(--bg-color);
+  color: var(--black);
 }
 
-
 .card-container {
-    display: grid;
-    grid-template-columns: 24% 24% 24% 24%;
-    justify-content: space-between;
-    gap: 2rem;
-    margin: 3rem 0;
+  display: grid;
+  grid-template-columns: 24% 24% 24% 24%;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 3rem 0;
 }
 
 .card {
-    /* style */
-    background: var(--white);
-    border-radius: 10px;
-    box-shadow: none;
-    /* keep items centered */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* only 1 card is opened when chevron is clicked */
-    align-self: flex-start;
-    /* padding left and right close to 0 */
-    padding-left: 1rem;
-    padding-right: 1rem;
+  /* style */
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: none;
+  /* keep items centered */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* only 1 card is opened when chevron is clicked */
+  align-self: flex-start;
+  /* padding left and right close to 0 */
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .thumbnail-container {
-    height: 5rem;
-    width: 5rem;
-    font-size: 2.2rem;
+  height: 5rem;
+  width: 5rem;
+  font-size: 2.2rem;
 
-    /* initials in center of circle */
-    align-content: center; 
+  /* initials in center of circle */
+  align-content: center;
 
-    background: var(--blue-green-color);
-    color: var(--white);
+  background: var(--blue-green-color);
+  color: var(--white);
 }
 
-
 .name {
-    margin-bottom: 0.2rem;
-    margin-top: 1rem;
+  margin-bottom: 0.2rem;
+  margin-top: 1rem;
 }
 
 .uk-label {
-    /* uikit icon btn */
-    background: var(--blue-green-color);
-    color: var(--white);
-    height: 30px;
-    width: 30px;
-    padding: 4px;
-    margin: 30px 4px 0 4px;
-    /* center icons in btn */
-    align-content: center;
+  /* uikit icon btn */
+  background: var(--blue-green-color);
+  color: var(--white);
+  height: 30px;
+  width: 30px;
+  padding: 4px;
+  margin: 30px 4px 0 4px;
+  /* center icons in btn */
+  align-content: center;
 }
 
-.key-contacts, .details {
-    margin-top: 2.4rem;
+.key-contacts,
+.details {
+  margin-top: 2.4rem;
 }
 
 .details {
-    /* long lines wrap */
-    word-break: break-word;
-    overflow-wrap: break-word;
+  /* long lines wrap */
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .detail-line + .detail-line {
-    /* space between each detail line */
-    margin-top: 15px;
+  /* space between each detail line */
+  margin-top: 15px;
 }
 
 .key-contacts {
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 .key-contacts-title {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
-.subtitle, .detail-line {
-    color: var(--secondary-font-color);
-    font-size: 0.7rem;
+.subtitle,
+.detail-line {
+  color: var(--secondary-font-color);
+  font-size: 0.7rem;
 }

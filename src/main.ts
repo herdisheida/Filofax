@@ -1,4 +1,4 @@
-import prepopulation from "./data/prepopulation.json";  // get data
+import prepopulation from "./data/prepopulation.json"; // get data
 
 /* 
   types and models
@@ -6,7 +6,7 @@ import prepopulation from "./data/prepopulation.json";  // get data
 
 enum ContactType {
   Individual = "individual",
-  Company = "company"
+  Company = "company",
 }
 type Contact = IndividualContact | CompanyContact;
 
@@ -16,7 +16,7 @@ interface BaseContact {
   type: ContactType;
 
   id: string;
-  isExpanded?: boolean;  // card expansion state
+  isExpanded?: boolean; // card expansion state
 }
 
 interface IndividualInfo {
@@ -27,8 +27,10 @@ interface IndividualInfo {
   website: string;
 }
 
-
-interface KeyContact { name: string; email: string; }
+interface KeyContact {
+  name: string;
+  email: string;
+}
 
 interface CompanyInfo {
   phoneNumber: string;
@@ -48,7 +50,6 @@ interface CompanyContact extends BaseContact {
   type: ContactType.Company;
   info: CompanyInfo;
 }
-
 
 /* 
   prepopulation types (matches JSON file)
@@ -78,13 +79,15 @@ type PrepopData = {
   contacts: Array<PrepopIndividual | PrepopCompany>;
 };
 
-
 /* 
   normalise json data to Contact interface format
 */
 function createInitials(name: string): string {
   const parts = name.trim().split(" ").filter(Boolean);
-  return parts.map(p => p[0]).join("").toUpperCase();
+  return parts
+    .map((p) => p[0])
+    .join("")
+    .toUpperCase();
 }
 
 function normalizePrepopulation(data: PrepopData): Contact[] {
@@ -135,9 +138,6 @@ function normalizePrepopulation(data: PrepopData): Contact[] {
   });
 }
 
-
-
-
 /* 
   local stoage
 */
@@ -151,7 +151,9 @@ function loadContacts(): Contact[] {
   const stored = localStorage.getItem(STORAGE_KEY);
 
   // already have data in localStorage
-  if (stored) { return JSON.parse(stored) as Contact[]; }
+  if (stored) {
+    return JSON.parse(stored) as Contact[];
+  }
 
   // save prepopulation data to localStorage
   const data = prepopulation as unknown as PrepopData;
@@ -163,10 +165,6 @@ function loadContacts(): Contact[] {
   saveContacts(initial);
   return initial;
 }
-
-
-
-
 
 /* 
   Rendering functions
@@ -195,7 +193,10 @@ function renderHeader(): string {
 }
 
 function renderContactCard(contact: Contact): string {
-  const subtitle = contact.type === ContactType.Individual ? contact.info.title : contact.info.industry;
+  const subtitle =
+    contact.type === ContactType.Individual
+      ? contact.info.title
+      : contact.info.industry;
 
   return `
     <div class="card uk-card uk-card-default uk-card-body" id="${contact.id}">
@@ -217,7 +218,7 @@ function renderContactCard(contact: Contact): string {
       </div>
 
       <div class="chevron" data-action="toggle">
-        ${contact.isExpanded ? "<span uk-icon=\"chevron-up\"></span>" : "<span uk-icon=\"chevron-down\"></span>"}
+        ${contact.isExpanded ? '<span uk-icon="chevron-up"></span>' : '<span uk-icon="chevron-down"></span>'}
       </div>
 
     </div>
@@ -249,14 +250,12 @@ function renderDetails(contact: Contact): string {
             (kc) => `
                 <span class="kc-name detail-line baskerville-font">${kc.name}</span><br>
                 <span class="kc-email detail-line baskerville-font">&lt;${kc.email}&gt;</span><br><br>
-            `
+            `,
           )
           .join("")}
     </div>
   `;
 }
-
-
 
 /*
   boot up
@@ -278,17 +277,20 @@ function setupEvents(root: HTMLElement) {
     const id = cardElem.id;
     if (!id) return;
 
-    state = state.map((c) => (c.id === id ? { ...c, isExpanded: !c.isExpanded } : c));
+    state = state.map((c) =>
+      c.id === id ? { ...c, isExpanded: !c.isExpanded } : c,
+    );
     saveContacts(state);
     renderApp(root, state);
   });
 }
 
+let state: Contact[] = [];
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.querySelector<HTMLDivElement>("#app");
+  if (!root) throw new Error("Missing #app");
 
-
-const root = document.querySelector<HTMLDivElement>("#app");
-if (!root) throw new Error("Missing #app");
-
-let state: Contact[] = loadContacts();
-renderApp(root, state);
-setupEvents(root);
+  state = loadContacts();
+  renderApp(root, state);
+  setupEvents(root);
+});
