@@ -10,8 +10,8 @@
 }
 
 /* fonts */
-/* @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"); */
-/* @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 
 ul, ol, span {
   list-style-type: none;
@@ -20,8 +20,9 @@ ul, ol, span {
 }
 
 /* space between screen-edge and items on screen */
-body {
+html {
     margin: 4rem 5rem;
+    background: var(--bg-color);
 }
 
 
@@ -34,6 +35,10 @@ body {
 }
 
 .card {
+    /* style */
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: none;
     /* keep items centered */
     display: flex;
     flex-direction: column;
@@ -43,7 +48,6 @@ body {
 }
 
 .thumbnail-container {
-    border-radius: 50%;
     height: 5rem;
     width: 5rem;
 
@@ -66,8 +70,9 @@ body {
     height: 30px;
     width: 30px;
     padding: 4px;
-    border-radius: 7px;
-    margin: 30px 3px 0 3px;
+    margin: 30px 4px 0 4px;
+    /* center icons in btn */
+    align-content: center;
 }
 
 .key-contacts, .details {

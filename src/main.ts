@@ -204,7 +204,7 @@ function renderContactCard(contact: Contact): string {
   return `
     <div class="card uk-card uk-card-default uk-card-body" id="${contact.id}">
       
-      <div class="thumbnail-container">
+      <div class="thumbnail-container uk-border-circle">
         <div class="thumb uk-text-bold">${contact.thumbnail}</div>
       </div>
 
@@ -214,10 +214,10 @@ function renderContactCard(contact: Contact): string {
       ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
 
       <div class="icon-container">
-        <div class="uk-label"><span uk-icon="receiver"></span></div>
-        <div class="uk-label"><span uk-icon="mail"></span></div>
-        <div class="uk-label"><span uk-icon="commenting"></span></div>
-        <div class="uk-label"><span uk-icon="calendar"></span></div>
+        <div class="uk-label uk-border-rounded"><span uk-icon="receiver"></span></div>
+        <div class="uk-label uk-border-rounded"><span uk-icon="mail"></span></div>
+        <div class="uk-label uk-border-rounded"><span uk-icon="commenting"></span></div>
+        <div class="uk-label uk-border-rounded"><span uk-icon="calendar"></span></div>
       </div>
 
       <div class="chevron" data-action="toggle">
