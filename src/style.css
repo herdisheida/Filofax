@@ -1,28 +1,41 @@
 /* variables */
 :root {
+    --white: #ffffff;
+    --black: black;
+
     --blue-green-color: #21cca3;
     --bg-color: #f3f5fb;
-    --card-bg-color: #ffffff;
 
-    --primary-font-color: black;
     --secondary-font-color: #939090;
 }
 
 /* fonts */
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"); */
 
 
 /* space between screen-edge and items on screen */
 body {
-    margin: 4rem 6.5rem;
+    margin: 4rem 5rem;
 }
 
 
 .card-container {
     display: grid;
-    grid-template-columns: 23% 23% 23% 23%;
+    grid-template-columns: 24% 24% 24% 24%;
     justify-content: space-between;
     gap: 2rem;
     margin: 3rem 0;
+}
+
+.thumbnail-container {
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+
+    /* initials in center of circle */
+    align-content: center; 
+
+    background: var(--blue-green-color);
+    color: var(--white);
 }

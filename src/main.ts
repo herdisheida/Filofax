@@ -188,7 +188,7 @@ function renderApp(root: HTMLElement, contacts: Contact[]) {
 
 function renderHeader(): string {
   return `
-    <h1>ADDRESS BOOK</h1>
+    <h1 class="uk-text-bold">ADDRESS BOOK</h1>
     <p>
       You can see all stored contacts in the list seen below. Each contact is either an individual or a company account.
     </p>
@@ -202,13 +202,13 @@ function renderContactCard(contact: Contact): string {
 
   // TODO when chevron is clicked the card of others should not be effecred (only the one im lcicking)
   return `
-    <div class="card uk-card uk-card-default uk-card-body uk-margin-small uk-padding" id="${contact.id}">
+    <div class="card uk-card uk-card-default uk-card-body" id="${contact.id}">
       
       <div class="thumbnail-container">
-        <div class="thumb">${contact.thumbnail}</div>
+        <div class="thumb uk-text-bold">${contact.thumbnail}</div>
       </div>
 
-      <h4 class="name">${contact.name}</h4>
+      <h4 class="name uk-text-bold">${contact.name}</h4>
       <p class="subtitle">${subtitle}</p>
 
       ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
@@ -247,7 +247,7 @@ function renderDetails(contact: Contact): string {
     <div class="detail-line">${c.website}</div>
 
     <div class="key-contacts">
-      <h3>Key contacts</h3>
+      <h5 class="uk-text-bold">Key contacts</h5>
       <ul>
         ${c.keyContacts
           .map(
