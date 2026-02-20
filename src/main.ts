@@ -208,8 +208,8 @@ function renderContactCard(contact: Contact): string {
         <div class="thumb">${contact.thumbnail}</div>
       </div>
 
-      <h2 class="name">${contact.name}</h2>
-      <div class="subtitle">${subtitle}</div>
+      <h4 class="name">${contact.name}</h4>
+      <p class="subtitle">${subtitle}</p>
 
       ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
 

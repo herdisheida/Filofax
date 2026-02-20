@@ -8,8 +8,21 @@
     --secondary-font-color: #939090;
 }
 
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
 
 /* space between screen-edge and items on screen */
 body {
-    margin: 4rem 8rem;
+    margin: 4rem 6.5rem;
+}
+
+
+.card-container {
+    display: grid;
+    grid-template-columns: 23% 23% 23% 23%;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 3rem 0;
 }
