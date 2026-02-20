@@ -1,0 +1,15 @@
+/* variables */
+:root {
+    --blue-green-color: #21cca3;
+    --bg-color: #f3f5fb;
+    --card-bg-color: #ffffff;
+
+    --primary-font-color: black;
+    --secondary-font-color: #939090;
+}
+
+
+/* space between screen-edge and items on screen */
+body {
+    margin: 4rem 8rem;
+}

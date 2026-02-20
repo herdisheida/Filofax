@@ -179,7 +179,7 @@ function renderApp(root: HTMLElement, contacts: Contact[]) {
     </header>
 
     <main>
-      <section class="card-container uk-flex uk-flex-center uk-flex-wrap uk-text-center">
+      <section class="card-container uk-text-center">
         ${contacts.map(renderContactCard).join("")}
       </section>
     </main>
