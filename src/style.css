@@ -39,3 +39,15 @@ body {
     background: var(--blue-green-color);
     color: var(--white);
 }
+
+.uk-label {
+    /* uikit icon btn */
+    background: var(--blue-green-color);
+    color: var(--white);
+    height: 30px;
+    width: 30px;
+    padding: 4px;
+    border-radius: 7px;
+    align-content: center;
+    margin: 30px 3px 0 3px;
+}
