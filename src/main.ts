@@ -209,7 +209,7 @@ function renderContactCard(contact: Contact): string {
       </div>
 
       <h4 class="name uk-text-bold">${contact.name}</h4>
-      <p class="subtitle">${subtitle}</p>
+      <div class="subtitle">${subtitle}</div>
 
       ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
 
@@ -247,19 +247,15 @@ function renderDetails(contact: Contact): string {
     <div class="detail-line">${c.website}</div>
 
     <div class="key-contacts">
-      <h5 class="uk-text-bold">Key contacts</h5>
-      <ul>
+      <div class="key-contacts-title uk-text-bold">Key contacts</div><br>
         ${c.keyContacts
           .map(
             (kc) => `
-              <li>
-                <span class="kc-name">${kc.name}</span>
-                <span class="kc-email">&lt;${kc.email}&gt;</span>
-              </li>
+                <span class="kc-name detail-line">${kc.name}</span><br>
+                <span class="kc-email detail-line">&lt;${kc.email}&gt;</span><br><br>
             `
           )
           .join("")}
-      </ul>
     </div>
   `;
 }

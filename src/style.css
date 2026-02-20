@@ -13,6 +13,11 @@
 /* @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"); */
 
+ul, ol, span {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
 /* space between screen-edge and items on screen */
 body {
@@ -40,6 +45,11 @@ body {
     color: var(--white);
 }
 
+.name {
+    margin-bottom: 0.1rem;
+    margin-top: 1rem;
+}
+
 .uk-label {
     /* uikit icon btn */
     background: var(--blue-green-color);
@@ -50,4 +60,26 @@ body {
     border-radius: 7px;
     align-content: center;
     margin: 30px 3px 0 3px;
+}
+
+.key-contacts, .details {
+    margin-top: 1.2rem;
+}
+
+.details {
+    line-height: 25px;
+}
+
+.key-contacts {
+    line-height: 15px;
+}
+
+.subtitle, .detail-line {
+    color: var(--secondary-font-color);
+    font-size: 0.7rem;
+}
+
+.key-contacts-title {
+    color: black;
+    font-size: 0.8rem;
 }
