@@ -1,3 +1,7 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+
 /* variables */
 :root {
     --white: #ffffff;
@@ -9,20 +13,19 @@
     --secondary-font-color: #939090;
 }
 
-/* fonts */
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
-
-ul, ol, span {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.spartan-font {
+    font-family: "League Spartan", sans-serif;
 }
+.baskerville-font {
+    font-family: "Libre Baskerville", serif;
+}
+
 
 /* space between screen-edge and items on screen */
 html {
-    margin: 4rem 5rem;
+    margin: 4rem 10rem;
     background: var(--bg-color);
+    color: var(--black);
 }
 
 
@@ -45,11 +48,15 @@ html {
     align-items: center;
     /* only 1 card is opened when chevron is clicked */
     align-self: flex-start;
+    /* padding left and right close to 0 */
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .thumbnail-container {
     height: 5rem;
     width: 5rem;
+    font-size: 2.2rem;
 
     /* initials in center of circle */
     align-content: center; 
@@ -58,8 +65,9 @@ html {
     color: var(--white);
 }
 
+
 .name {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.2rem;
     margin-top: 1rem;
 }
 
@@ -76,23 +84,28 @@ html {
 }
 
 .key-contacts, .details {
-    margin-top: 1.2rem;
+    margin-top: 2.4rem;
 }
 
 .details {
-    line-height: 25px;
+    /* long lines wrap */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+.detail-line + .detail-line {
+    /* space between each detail line */
+    margin-top: 15px;
 }
 
 .key-contacts {
-    line-height: 15px;
+    line-height: 1.2;
+}
+
+.key-contacts-title {
+    font-size: 0.8rem;
 }
 
 .subtitle, .detail-line {
     color: var(--secondary-font-color);
     font-size: 0.7rem;
-}
-
-.key-contacts-title {
-    color: black;
-    font-size: 0.8rem;
 }

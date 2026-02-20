@@ -124,7 +124,6 @@ function normalizePrepopulation(data: PrepopData): Contact[] {
         address: c.address,
         website: c.website,
 
-        // TODO umm á þetta að vera individual info? (en það er ekkert name né email þar?)
         keyContacts: c.keyContacts.map((kc) => ({
           name: kc.name,
           email: kc.email,
@@ -188,8 +187,8 @@ function renderApp(root: HTMLElement, contacts: Contact[]) {
 
 function renderHeader(): string {
   return `
-    <h1 class="uk-text-bold">ADDRESS BOOK</h1>
-    <p>
+    <h1 class="uk-text-bold spartan-font">ADDRESS BOOK</h1>
+    <p class="baskerville-font">
       You can see all stored contacts in the list seen below. Each contact is either an individual or a company account.
     </p>
   `;
@@ -198,20 +197,17 @@ function renderHeader(): string {
 function renderContactCard(contact: Contact): string {
   const subtitle = contact.type === ContactType.Individual ? contact.info.title : contact.info.industry;
 
-  // get thumbnail (abbreviation of name)
-
-  // TODO when chevron is clicked the card of others should not be effecred (only the one im lcicking)
   return `
     <div class="card uk-card uk-card-default uk-card-body" id="${contact.id}">
       
       <div class="thumbnail-container uk-border-circle">
-        <div class="thumb uk-text-bold">${contact.thumbnail}</div>
+        <div class="thumb uk-text-bold spartan-font">${contact.thumbnail}</div>
       </div>
 
       <h4 class="name uk-text-bold">${contact.name}</h4>
-      <div class="subtitle">${subtitle}</div>
+      <div class="subtitle baskerville-font">${subtitle}</div>
 
-      ${contact.isExpanded ? `<div class="details">${renderDetails(contact)}</div>` : ""}
+      ${contact.isExpanded ? `<div class="details uk-text-light">${renderDetails(contact)}</div>` : ""}
 
       <div class="icon-container">
         <div class="uk-label uk-border-rounded"><span uk-icon="receiver"></span></div>
@@ -232,34 +228,33 @@ function renderDetails(contact: Contact): string {
   if (contact.type === ContactType.Individual) {
     const i = contact.info;
     return `
-      <div class="detail-line">${i.phoneNumber}</div>
-      <div class="detail-line">${i.email}</div>
-      <div class="detail-line">${i.address}</div>
-      <div class="detail-line">${i.website}</div>
+      <div class="detail-line baskerville-font">${i.phoneNumber}</div>
+      <div class="detail-line baskerville-font" style="text-decoration: underline;">${i.email}</div>
+      <div class="detail-line baskerville-font">${i.address}</div>
+      <div class="detail-line baskerville-font" style="text-decoration: underline;">${i.website}</div>
     `;
   }
 
   const c = contact.info;
   return `
-    <div class="detail-line">${c.phoneNumber}</div>
-    <div class="detail-line">${c.email}</div>
-    <div class="detail-line">${c.address}</div>
-    <div class="detail-line">${c.website}</div>
+    <div class="detail-line baskerville-font">${c.phoneNumber}</div>
+    <div class="detail-line baskerville-font" style="text-decoration: underline;">${c.email}</div>
+    <div class="detail-line baskerville-font">${c.address}</div>
+    <div class="detail-line baskerville-font" style="text-decoration: underline;">${c.website}</div>
 
     <div class="key-contacts">
-      <div class="key-contacts-title uk-text-bold">Key contacts</div><br>
+      <div class="key-contacts-title uk-text-bold uk-text-secondary spartan-font">Key contacts</div><br>
         ${c.keyContacts
           .map(
             (kc) => `
-                <span class="kc-name detail-line">${kc.name}</span><br>
-                <span class="kc-email detail-line">&lt;${kc.email}&gt;</span><br><br>
+                <span class="kc-name detail-line baskerville-font">${kc.name}</span><br>
+                <span class="kc-email detail-line baskerville-font">&lt;${kc.email}&gt;</span><br><br>
             `
           )
           .join("")}
     </div>
   `;
 }
-
 
 
 
